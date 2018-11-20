@@ -11,6 +11,7 @@
 
         <module>Storm</module>
         <module>MapReduce</module>
+        <module>Shell</module>
     </modules>
     <packaging>pom</packaging>
 
