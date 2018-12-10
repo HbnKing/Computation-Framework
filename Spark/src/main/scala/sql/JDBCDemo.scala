@@ -5,7 +5,7 @@ package sql
 import java.text.SimpleDateFormat
 import java.util.{Date, Properties}
 
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.{SaveMode, SparkSession}
 
 
 object JDBCDemo {

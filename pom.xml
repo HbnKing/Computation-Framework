@@ -12,6 +12,8 @@
         <module>MapReduce</module>
         <module>Shell</module>
         <module>Spark</module>
+        <module>Exception</module>
+        <module>Hive</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -20,12 +22,12 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jackson.version>1.9.12</jackson.version>
-        <hadoop.version>2.6.0</hadoop.version>
+        <hadoop.version>2.7.7</hadoop.version>
         <fastjson.version>1.2.31</fastjson.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <scala.version>2.11.12</scala.version>
-        <spark.version>2.3.0</spark.version>
+        <spark.version>2.2.0</spark.version>
         <hadoop.version>2.6.4</hadoop.version>
         <encoding>UTF-8</encoding>
     </properties>
@@ -36,14 +38,14 @@
                 <groupId>org.apache.hadoop</groupId>
                 <artifactId>hadoop-common</artifactId>
                 <version>${hadoop.version}</version>
-                <scope>provided</scope>
+                <!--<scope>provided</scope>-->
             </dependency>
 
             <dependency>
                 <groupId>org.apache.hadoop</groupId>
                 <artifactId>hadoop-hdfs</artifactId>
                 <version>${hadoop.version}</version>
-                <scope>provided</scope>
+               <!-- <scope>provided</scope>-->
             </dependency>
 
 
