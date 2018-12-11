@@ -29,20 +29,20 @@ public class DeptController {
 
 
 
-    public String test(){
+    public void test(){
 
 
        // hiveContext.sql("use oracle_table");
       // Dataset<Row> sql = hiveContext.sql("show tables");
       //  DataFrame sql=hiveContext.sql("show databases");
-        Dataset<Row> sql = hiveContext.sql("select count(1) from pointer2");
+        Dataset<Row> sql = hiveContext.sql("show tables");
 
         //  JSONArray jsonArray = JSONArray.fromObject(json.getString("data"));
        //List<Object> collect =   sql.collectAsList().stream().map(x->x.toString()).collect(Collectors.toList());
 
        //  return   sql.toJSON();
     //   List<Object> collect = sql.collectAsList().stream().map(x -> x.getString(1)).collect(Collectors.toList());
-      return sql.toString();
+      sql.show();
 
       //  return "123456";
 
@@ -51,7 +51,7 @@ public class DeptController {
 
     public static void main(String[] args) {
         DeptController  cc = new DeptController();
-        System.out.println(cc.test());
+        cc.test();
     }
 
 }

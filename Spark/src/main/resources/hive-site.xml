@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-        <?xml-stylesheet type="text/xsl" href="configuration.xsl"?><!--
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?><!--
    Licensed to the Apache Software Foundation (ASF) under one or more
    contributor license agreements.  See the NOTICE file distributed with
    this work for additional information regarding copyright ownership.
@@ -51,7 +51,7 @@
     </property>
     <property>
         <name>hive.repl.cmrootdir</name>
-        <value>/user/hive/cmroot/</value>
+        <value>/Users/wh/IdeaProjects/warehouse/</value>
         <description>Root dir for ChangeManager, used for deleted files.</description>
     </property>
     <property>
@@ -72,12 +72,12 @@
     </property>
     <property>
         <name>hive.exec.local.scratchdir</name>
-        <value>/home/software/appdata/hive/scratchdir</value>
+        <value>/Users/wh/IdeaProjects/warehouse/hive/scratchdir</value>
         <description>Local scratch space for Hive jobs</description>
     </property>
     <property>
         <name>hive.downloaded.resources.dir</name>
-        <value>/home/software/appdata/hive/resources</value>
+        <value>/Users/wh/IdeaProjects/warehouse/hive/resources</value>
         <description>Temporary local directory for added resources in the remote file system.</description>
     </property>
     <property>
@@ -1682,7 +1682,7 @@
     </property>
     <property>
         <name>hive.querylog.location</name>
-        <value>/home/software/appdata/hive/location</value>
+        <value>/Users/wh/IdeaProjects/warehouse/hive/location</value>
         <description>Location of Hive run time structured log file</description>
     </property>
     <property>
