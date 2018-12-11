@@ -1,13 +1,10 @@
-package sql.read;
+package sql.hive;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.hive.HiveContext;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class DeptController {
 

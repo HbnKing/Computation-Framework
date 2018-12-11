@@ -62,6 +62,40 @@
             </dependency>
 
 
+            <!--  mongodb 一套的  驱动 -->
+            <!-- https://mvnrepository.com/artifact/org.mongodb/bson -->
+            <dependency>
+                <groupId>org.mongodb</groupId>
+                <artifactId>bson</artifactId>
+                <version>3.9.1</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.mongodb.spark</groupId>
+                <artifactId>mongo-spark-connector_${scala.binary.version}</artifactId>
+                <version>${spark.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
+            <dependency>
+                <groupId>org.mongodb</groupId>
+                <artifactId>mongo-java-driver</artifactId>
+                <version>3.9.1</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.mongodb/mongodb-driver -->
+            <dependency>
+                <groupId>org.mongodb</groupId>
+                <artifactId>mongodb-driver</artifactId>
+                <version>3.9.1</version>
+            </dependency>
+
+
+
+
+
+
 
             <dependency>
                 <groupId>mysql</groupId>

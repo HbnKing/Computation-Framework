@@ -1,4 +1,4 @@
-package sql.read;
+package sql.hive;
 
 import org.apache.hadoop.conf.Configuration;
 
