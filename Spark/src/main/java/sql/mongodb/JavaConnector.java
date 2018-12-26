@@ -1,6 +1,8 @@
 package sql.mongodb ;
 
+import java.text.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.mongodb.*;
@@ -11,6 +13,8 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+
+import static com.mongodb.client.model.Filters.*;
 
 /**
  * @author wangheng
@@ -28,7 +32,7 @@ public class JavaConnector {
     private static List<MongoCredential> credentialsLists = new ArrayList<MongoCredential>();
 
 
-    public static void main(String args[]) {
+    public static void main(String args[]) throws ParseException {
             try {
                 //未开启认证
                 // 连接到 mongodb 服务
@@ -42,17 +46,23 @@ public class JavaConnector {
                // System.out.println("连接到数据库");
 
 
-                serverAddress = new ServerAddress("localhost",27017);
-                addressLists.add(serverAddress);
-                credentials = MongoCredential.createScramSha1Credential("username", "authordatabase", "password".toCharArray());
-                credentialsLists.add(credentials);
-                mongoClient = new MongoClient(addressLists, credentialsLists);
+               // serverAddress = new ServerAddress("localhost",27017);
+                //addressLists.add(serverAddress);
+               // credentials = MongoCredential.createScramSha1Credential("username", "authordatabase", "password".toCharArray());
+               // credentialsLists.add(credentials);
+               // mongoClient = new MongoClient(addressLists, credentialsLists);
+
+                String uriStr = "mongodb://192.168.3.130:27017/test.pointer?replicaSet=wh";
+
+                mongoClient = new MongoClient(new MongoClientURI(uriStr));
+
+
             }catch (MongoException e)
             {
                 System.out.println(e.toString());
             }
             if(null != mongoClient){
-                mongoDatabase = mongoClient.getDatabase("authordatabase");
+                mongoDatabase = mongoClient.getDatabase("test");
                 System.out.println("database mongoClient ");
            /* collection = database.getCollection("system.users");
            foundDocument = collection.find().into(
@@ -63,7 +73,7 @@ public class JavaConnector {
                 //mongoDatabase.createCollection("students");
                 System.out.println("集合students创建成功");
                 // 选择集合
-                MongoCollection<Document> collection = mongoDatabase.getCollection("students");
+                MongoCollection<Document> collection = mongoDatabase.getCollection("pointer");
                 System.out.println("集合students选择成功");
                 // 插入文档
                 /**
@@ -71,17 +81,26 @@ public class JavaConnector {
                  * 3. 将文档集合插入数据库集合中 mongoCollection.insertMany(List<Document>)
                  * 插入单个文档可以用 mongoCollection.insertOne(Document)
                  */
-                Document document = new Document("name", "老司机5").append("age", 31);
-                List<Document> documents = new ArrayList<Document>();
-                documents.add(document);
-                collection.insertMany(documents);
-                System.out.println("文档插入成功");
+               // Document document = new Document("name", "老司机5").append("age", 31);
+               // List<Document> documents = new ArrayList<Document>();
+                //documents.add(document);
+                //collection.insertMany(documents);
+                //System.out.println("文档插入成功");
 
 
 
                 // 更新文档
                 // 将文档中age=31的文档修改为age=32
-                collection.updateMany(Filters.eq("age", 51), new Document("$set", new Document("age", 77)));
+                //collection.updateMany(eq("age", 51), new Document("$set", new Document("age", 77)));
+
+               collection.find(
+                        and(eq("status", "A"),
+                                or(lt("qty", 30), regex("item", "^p")))
+                );
+
+               /* collection.find(
+                        and(lte("insettime", ISODate("2017-12-31T16:00:50Z") ), gt("insettime", "^p"))
+                );*/
 
                 /**
                  * 数据筛选条件
@@ -103,17 +122,29 @@ public class JavaConnector {
                  * 1. 获取迭代器FindIterable<Document> 2. 获取游标MongoCursor<Document> 3.
                  * 通过游标遍历检索出的文档集合
                  */
+                DateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 //条件查找
                 FindIterable<Document> findIterable2 = collection.find(cond1);
                 //全表
-                FindIterable<Document> findIterable = collection.find();
+                //FindIterable<Document> findIterable = collection.find();
+                FindIterable<Document> findIterable =
+                collection.find(
+                        and(lt("insettime", format.parse("2018-01-04 07:00:10")), gte("insettime", format.parse("2018-01-04 07:00:00")))
+                );
                 //范围查找
                 //FindIterable<Document> findIterable1 = collection.find({likes : {$age : 100});
                 MongoCursor<Document> mongoCursor = findIterable.iterator();
+
+
+
+
+                int counter =0  ;
                 while (mongoCursor.hasNext()) {
-                    System.out.println(mongoCursor.next()    +"文档数据");
+                    System.out.println(mongoCursor.next()   +"   文档数据");
+                    counter ++ ;
                 }
 
+        System.out.println(counter);
 
                 // 删除符合条件的第一个文档
                 //collection.deleteOne(Filters.eq("name", "老司机3"));

@@ -363,7 +363,7 @@
     </property>
     <property>
         <name>hive.metastore.warehouse.dir</name>
-        <value>/user/hive/warehouse</value>
+        <value>/Users/wh/IdeaProjects/warehouse/warehouse</value>
         <description>location of default database for the warehouse</description>
     </property>
     <property>
@@ -1682,7 +1682,11 @@
     </property>
     <property>
         <name>hive.querylog.location</name>
-        <value>/Users/wh/IdeaProjects/warehouse/hive/location</value>
+        <value>
+
+
+
+        </value>
         <description>Location of Hive run time structured log file</description>
     </property>
     <property>

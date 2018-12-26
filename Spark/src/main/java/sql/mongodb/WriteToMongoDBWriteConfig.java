@@ -35,6 +35,8 @@ public final class WriteToMongoDBWriteConfig {
                 .config("spark.mongodb.output.uri","mongodb://192.168.3.130/test.spark")
                 .getOrCreate();
 
+
+
         JavaSparkContext jsc = new JavaSparkContext(spark.sparkContext());
 
         // Create a custom WriteConfig

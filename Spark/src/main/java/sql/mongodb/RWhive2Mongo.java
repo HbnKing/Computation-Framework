@@ -12,6 +12,8 @@ import java.util.Map;
  * @author wangheng
  * @create 2018-12-11 下午2:05
  * @desc
+ *
+ * 从 hive 读取数据并且写入MongoDB
  **/
 public class RWhive2Mongo {
 
@@ -25,8 +27,6 @@ public class RWhive2Mongo {
 
         Map link = new HashMap();
         link.put("spark.mongodb.output.uri",uriStr);
-
-
 
         hivesql.write().options(link).mode(SaveMode.Overwrite).format("com.mongodb.spark.sql").save();
 
