@@ -31,8 +31,8 @@ public final class WriteToMongoDBWriteConfig {
         SparkSession spark = SparkSession.builder()
                 .master("local")
                 .appName("MongoSparkConnectorIntro")
-                .config("spark.mongodb.input.uri","mongodb://192.168.3.130/test.spark")
-                .config("spark.mongodb.output.uri","mongodb://192.168.3.130/test.spark")
+                .config("spark.mongodb.input.uri","mongodb://localhost/test.students")
+                .config("spark.mongodb.output.uri","mongodb://localhost/test.spark")
                 .getOrCreate();
 
 

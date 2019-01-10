@@ -23,7 +23,7 @@ public class RWhive2Mongo {
         Dataset<Row> hivesql = sparkSession.sql("select * from  pointer2");
 
 
-        String uriStr = "mongodb://192.168.3.130:27017/test.pointer?replicaSet=wh";
+        String uriStr = "mongodb://192.168.3.130:27017/test.pointer2?replicaSet=wh";
 
         Map link = new HashMap();
         link.put("spark.mongodb.output.uri",uriStr);

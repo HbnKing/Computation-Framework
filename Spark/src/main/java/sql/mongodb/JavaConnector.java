@@ -52,9 +52,10 @@ public class JavaConnector {
                // credentialsLists.add(credentials);
                // mongoClient = new MongoClient(addressLists, credentialsLists);
 
-                String uriStr = "mongodb://192.168.3.130:27017/test.pointer?replicaSet=wh";
+                String uriStr = "mongodb://192.168.3.131:27017/local.oplog.rs?replicaSet=wh";
 
                 mongoClient = new MongoClient(new MongoClientURI(uriStr));
+
 
 
             }catch (MongoException e)
@@ -62,7 +63,7 @@ public class JavaConnector {
                 System.out.println(e.toString());
             }
             if(null != mongoClient){
-                mongoDatabase = mongoClient.getDatabase("test");
+                mongoDatabase = mongoClient.getDatabase("local");
                 System.out.println("database mongoClient ");
            /* collection = database.getCollection("system.users");
            foundDocument = collection.find().into(
@@ -73,7 +74,7 @@ public class JavaConnector {
                 //mongoDatabase.createCollection("students");
                 System.out.println("集合students创建成功");
                 // 选择集合
-                MongoCollection<Document> collection = mongoDatabase.getCollection("pointer");
+                MongoCollection<Document> collection = mongoDatabase.getCollection("oplog.rs");
                 System.out.println("集合students选择成功");
                 // 插入文档
                 /**
@@ -124,13 +125,13 @@ public class JavaConnector {
                  */
                 DateFormat format= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 //条件查找
-                FindIterable<Document> findIterable2 = collection.find(cond1);
+                //FindIterable<Document> findIterable2 = collection.find(cond1);
                 //全表
-                //FindIterable<Document> findIterable = collection.find();
-                FindIterable<Document> findIterable =
+                FindIterable<Document> findIterable = collection.find();
+                /*FindIterable<Document> findIterable =
                 collection.find(
                         and(lt("insettime", format.parse("2018-01-04 07:00:10")), gte("insettime", format.parse("2018-01-04 07:00:00")))
-                );
+                );*/
                 //范围查找
                 //FindIterable<Document> findIterable1 = collection.find({likes : {$age : 100});
                 MongoCursor<Document> mongoCursor = findIterable.iterator();

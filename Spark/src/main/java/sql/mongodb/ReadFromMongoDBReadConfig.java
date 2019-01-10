@@ -40,8 +40,9 @@ public final class ReadFromMongoDBReadConfig {
         SparkSession spark = SparkSession.builder()
                 .master("local")
                 .appName("MongoSparkConnectorIntro")
-                .config("spark.mongodb.input.uri", "mongodb://192.168.3.130:27017/test.pointer?replicaSet=wh")
-                .config("spark.mongodb.output.uri", "mongodb://192.168.3.130:27017/test.pointer2?replicaSet=wh")
+                //oplog.rs
+                .config("spark.mongodb.input.uri", "mongodb://192.168.3.131:27017/local.oplog.rs?replicaSet=wh")
+                .config("spark.mongodb.output.uri", "mongodb://192.168.3.130:27017/test.pointer3?replicaSet=wh")
                 .getOrCreate();
 
         // Create a JavaSparkContext using the SparkSession's SparkContext object
@@ -82,7 +83,7 @@ public final class ReadFromMongoDBReadConfig {
         long  startertime = System.currentTimeMillis();
         JavaMongoRDD<Document> customRdd = MongoSpark.load(jsc, readConfig);
 
-        //System.out.println(customRdd.count());
+
         System.out.println("第一次查询的时间是 "+ (System.currentTimeMillis()-startertime));
 
         customRdd.foreach(new VoidFunction<Document>() {
