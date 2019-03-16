@@ -1,0 +1,14 @@
+{"stuId":"001", "subId":1, "grade":97}
+{"stuId":"001", "subId":2, "grade":50}
+{"stuId":"001", "subId":3, "grade":70}
+{"stuId":"002", "subId":1, "grade":80}
+{"stuId":"002", "subId":2, "grade":30}
+{"stuId":"002", "subId":3, "grade":40}
+{"stuId":"002", "subId":1, "grade":93}
+{"stuId":"003", "subId":2, "grade":95}
+{"stuId":"003", "subId":3, "grade":85}
+{"stuId":"004", "subId":1, "grade":73}
+{"stuId":"004", "subId":2, "grade":78}
+{"stuId":"004", "subId":3, "grade":87}
+{"class":13 ,"tag" :"bt" ,"student":["003","004"]}
+{"class":14 ,"tag" :"bt" ,"student":["001","002"]}

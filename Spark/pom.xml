@@ -9,13 +9,17 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>Spark</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>spark-basic</module>
+    </modules>
 
 
-        <properties>
+    <properties>
             <hadoop.version>2.5.0</hadoop.version>
             <scala.binary.version>2.11</scala.binary.version>
             <scala.version>2.11.12</scala.version>
-            <spark.version>2.2.0</spark.version>
+            <spark.version>2.3.0</spark.version>
         </properties>
 
         <dependencies>
