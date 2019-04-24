@@ -6,10 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.spark.api.java.function.MapFunction;
-import org.apache.spark.sql.Dataset;
-import org.apache.spark.sql.Encoders;
-import org.apache.spark.sql.Row;
-import org.apache.spark.sql.SparkSession;
+import org.apache.spark.sql.*;
 
 /**
  * @author wangheng
@@ -100,6 +97,7 @@ public class HiveReader {
         spark.sql("SELECT * FROM records r JOIN src s ON r.key = s.key").show();
 
 
+        //recordsDF.write().mode().option()
     }
 
 }

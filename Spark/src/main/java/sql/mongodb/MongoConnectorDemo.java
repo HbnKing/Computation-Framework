@@ -27,13 +27,14 @@ public class MongoConnectorDemo {
         SparkSession spark = SparkSession.builder()
                 .master("local")
                 .appName("MongoSparkConnectorIntro")
-                .config("spark.mongodb.input.uri", "mongodb://192.168.3.130:27017/test.pointer?replicaSet=wh")
-                .config("spark.mongodb.output.uri", "mongodb://192.168.3.130:27017/test.pointer2?replicaSet=wh")
+                .config("spark.mongodb.input.uri", "mongodb://localhost:27017/test.students")
+                .config("spark.mongodb.output.uri", "mongodb://localhost:27017/test.output")
                 .getOrCreate();
 
         JavaSparkContext jsc = new JavaSparkContext(spark.sparkContext());
         //默认 mongoSpark  返回的是 JavaMongoRdd
         // 返回为 DataSet 或者 dataFRAME  这样处理之后 保存到 mongo中 如果 _id  存在  会 upsert
+
         Dataset<Row> customRdd = MongoSpark.load(jsc).toDF();
 
         //写入到mongoDB
